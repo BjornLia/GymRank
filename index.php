@@ -9,4 +9,9 @@ $app->get('/hello/{name}', function ($request, $response, $args) {
     return $response;
 });
 
+$app->get('/goodbye/{name}', function ($request, $response, $args) {
+    $response->write("Good bye, " . $args['name']);
+    return $response;
+});
+
 $app->run();
