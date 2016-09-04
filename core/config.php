@@ -7,23 +7,15 @@
 	error_reporting(E_ALL);
 
 	// Connect to global database.
+	$db = null;
 	try {
 		$db = new PDO(
-	    'mysql:host=localhost;dbname=gymrank',
+	    'mysql:host=localhost;dbname=trainers',
 	    "root",
-	    "",
+	    "root",
 	    array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 	} catch(PDOException $ex) {
-		debugLog("MySQL query error (".$ex->getMessage().")");
-		sendJson(500, array("error" => "MySQL query error (".$ex->getMessage().")"), true);
-	}
-
-
-	if(isset($_COOKIE['simplix_lang'])) {
-		$lang = getSupportedLanguage($app->getCookie('gymrank_lang'));
-		require_once('languages/'.$lang.'.lang.php');
-
-	} else {
-		require_once('languages/sv.lang.php');
+		//debugLog("MySQL query error (".$ex->getMessage().")");
+		//sendJson(500, array("error" => "MySQL query error (".$ex->getMessage().")"), true);
 	}
 ?>
